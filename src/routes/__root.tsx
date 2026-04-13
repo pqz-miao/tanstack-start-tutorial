@@ -1,6 +1,9 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+
+import { Toaster } from '#/components/ui/sonner'
+import { ThemeProvider } from '#/lib/theme-provider'
 
 import appCss from '../styles.css?url'
 
@@ -17,7 +20,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'yoooo',
       },
     ],
     links: [
@@ -37,8 +40,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="font-sans antialiased wrap-anywhere selection:bg-[rgba(79,184,178,0.24)]">
-        {children}
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+        <Toaster closeButton position="top-center" />
         <TanStackDevtools
           config={{
             position: 'bottom-right',
